@@ -19,7 +19,7 @@ if (app.Environment.IsDevelopment())
 app.MapGet("/api/generate", () =>
 {
     Random _random = new Random();
-    int randomNumber = _random.Next(1, 101);
+    int randomNumber = _random.Next(1, 11);
 
     var response = new Result
     {

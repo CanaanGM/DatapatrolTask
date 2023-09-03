@@ -1,6 +1,6 @@
 ﻿namespace Listen
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("");
+            ListViewItem listViewItem2 = new ListViewItem("");
             apiLbl = new Label();
             BaseUrlTextBox = new TextBox();
             StartButton = new Button();
@@ -83,7 +83,7 @@
             // ListenersListView
             // 
             ListenersListView.Columns.AddRange(new ColumnHeader[] { colName, colTarget, colCounter });
-            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem2 });
             ListenersListView.Location = new Point(69, 140);
             ListenersListView.Name = "ListenersListView";
             ListenersListView.Size = new Size(409, 245);
@@ -125,10 +125,12 @@
             UnregisterButton.UseVisualStyleBackColor = true;
             UnregisterButton.Click += UnregisterButton_Click;
             // 
-            // Form1
+            // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(800, 450);
             Controls.Add(UnregisterButton);
             Controls.Add(RegisterButton);
@@ -137,7 +139,7 @@
             Controls.Add(StartButton);
             Controls.Add(BaseUrlTextBox);
             Controls.Add(apiLbl);
-            Name = "Form1";
+            Name = "MainForm";
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();

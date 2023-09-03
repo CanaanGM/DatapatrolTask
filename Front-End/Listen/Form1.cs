@@ -4,17 +4,16 @@ using System.Diagnostics.Metrics;
 
 namespace Listen
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
 
         public bool Active { get; set; } = false;
         private List<APIClient> activeClients = new List<APIClient>();
         private List<Thread> activeThreads = new List<Thread>();
-
         private Dictionary<string, ListViewItem> listenerListViewMap = new Dictionary<string, ListViewItem>();
 
         private string APIUrl;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             ListenersListView.View = View.Details;
@@ -92,21 +91,19 @@ namespace Listen
         {
             foreach (var apiClient in activeClients)
             {
-                // Stop the APIClient thread
-                apiClient.StopMonitoring(); // Calls the updated StopMonitoring method
+                apiClient.StopMonitoring();
             }
 
-            // Clear the list of activeClients
             activeClients.Clear();
 
-            // Clear the ListView
             ListenersListView.Items.Clear();
 
-            // Clear the association dictionary
             listenerListViewMap.Clear();
 
             FlipButtonState(ref StartButton);
             FlipButtonState(ref StopButton);
+            Active = false;
+
 
         }
 
@@ -140,27 +137,20 @@ namespace Listen
         {
             if (ListenersListView.SelectedItems.Count > 0)
             {
-                // Get the selected ListViewItem
                 ListViewItem selectedItem = ListenersListView.SelectedItems[0];
 
-                // Get the associated name (key) for the selected ListViewItem
                 string listenerName = selectedItem.Text;
 
-                // Find the corresponding APIClient in the apiClients list
                 APIClient apiClient = activeClients.FirstOrDefault(client => client.Name == listenerName);
 
                 if (apiClient != null)
                 {
-                    // Stop the APIClient thread
-                    apiClient.StopMonitoring(); // Calls the updated StopMonitoring method
+                    apiClient.StopMonitoring();
 
-                    // Remove the ListViewItem from the ListView
                     ListenersListView.Items.Remove(selectedItem);
 
-                    // Remove the association from the dictionary
                     listenerListViewMap.Remove(listenerName);
 
-                    // Remove the APIClient from the activeClients list
                     activeClients.Remove(apiClient);
                 }
             }

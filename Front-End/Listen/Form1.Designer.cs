@@ -155,7 +155,7 @@
             Controls.Add(BaseUrlTextBox);
             Controls.Add(apiLbl);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "Epic name here!";
             ResumeLayout(false);
             PerformLayout();
         }

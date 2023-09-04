@@ -5,6 +5,8 @@
 `!threadStoppedEvent.WaitOne(TimeSpan.FromSeconds(10))`
 ![](./static/test.gif)
 
+**1 sec grace**
+![](./static/grace1.gif)
 
 ## API
 - used minimal controllers to keep it minimal . . . 

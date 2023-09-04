@@ -17,7 +17,7 @@ namespace Listen.Data
         "Basarios", "Nibelsnarf", "Gammoth", "Astalos", "Mizutsune", "Glavenus", "Valstrax", "Zorah Magdaros", "Leshen", "Behemoth"
     };
 
-        private static readonly string[] monsterNameSuffixes = {
+        private static readonly string[] monsterNamePrefixes = {
         "Subspecies", "Variant", "Rare Species", "Furious", "Raging", "Savage", "Apex", "Zenith", "Gamma", "Molten", "Elder Dragon",
         "Ancient", "Alpha", "Beta", "Crimson", "Azure", "Silver", "Gold", "Emerald", "Shiny", "Rust", "Metal", "Black", "White",
         "Ivory", "Snowy", "Steel", "Crystal", "Diamond", "Vermilion", "Cobalt", "Crimson", "Abyssal", "Radiant", "Heavenly",
@@ -31,8 +31,8 @@ namespace Listen.Data
         public static string GenerateRandomMonsterName()
         {
             string randomMonster = normalMonsterNames[random.Next(normalMonsterNames.Length)];
-            string randomSuffix = monsterNameSuffixes[random.Next(monsterNameSuffixes.Length)];
-            return randomMonster + " " + randomSuffix;
+            string randomPrefix = monsterNamePrefixes[random.Next(monsterNamePrefixes.Length)];
+            return randomPrefix + " " + randomMonster;
         }
     }
 }

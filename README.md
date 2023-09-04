@@ -2,6 +2,7 @@
 > a winform app with a simple api.
 
 **unregistering and stopping appear slow cause of the grace period i gave the thread to stop**
+`!threadStoppedEvent.WaitOne(TimeSpan.FromSeconds(10))`
 ![](./static/test.gif)
 
 

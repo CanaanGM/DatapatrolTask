@@ -1,6 +1,8 @@
 # Datapatrol task
 > a winform app with a simple api.
 
+
+
 ## API
 - used minimal controllers to keep it minimal . . . 
 - Result and Data classes are in the same file as Program
@@ -16,6 +18,9 @@
 but i'll highlight some of my desicions
 
  > unlike in the API, in here i've made different files for the small classes so they don't pollute the Listener class. 
+
+> instead of custom error handling i'm just logging to the console
+
  
 ### Buttons
 > all 4 buttons utilize threads in a safe manner ; no thread messes with what the other is creating/managing.
@@ -112,3 +117,8 @@ but i'll highlight some of my desicions
 > the reponse object from the Api
 
 - Data `DataObject` 
+
+
+
+--- 
+

@@ -1,6 +1,7 @@
 # Datapatrol task
 > a winform app with a simple api.
 
+![](./static/test.gif)
 
 
 ## API

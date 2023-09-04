@@ -13,7 +13,6 @@ namespace Listen.Data
     {
         private readonly HttpClient httpClient;
 
-        public bool Active { get; set; } = false;
         public string Name { get; set; } = string.Empty;
         public int Counter { get; set; } = 0;
         public int Target { get; set; } = 0;
@@ -42,11 +41,6 @@ namespace Listen.Data
             threadStoppedEvent = new ManualResetEvent(false);
         }
 
-
-        public void StartMonitoring()
-        {
-            Task.Run(() => StartMonitoringAsync());
-        }
 
         public async Task StartMonitoringAsync()
         {
@@ -149,6 +143,7 @@ namespace Listen.Data
                 {
                     cancellationTokenSource.Dispose();
                     threadStoppedEvent.Dispose();
+                    httpClient.Dispose();
                 }
 
 

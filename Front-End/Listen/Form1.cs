@@ -7,12 +7,11 @@ namespace Listen
     public partial class MainForm : Form
     {
 
-        public bool Active { get; set; } = false;
         private List<Listener> activeListeners = new List<Listener>();
         private List<Thread> activeThreads = new List<Thread>();
         private Dictionary<string, ListViewItem> listenerListViewMap = new Dictionary<string, ListViewItem>();
 
-        private string APIUrl;
+        private string? APIUrl;
         public MainForm()
         {
             InitializeComponent();
@@ -24,54 +23,46 @@ namespace Listen
         {
             FlipButtonState(ref StartButton);
             FlipButtonState(ref StopButton);
-
             FlipButtonState(ref RegisterButton);
             FlipButtonState(ref UnregisterButton);
 
-
-
-            Active = true;
 
             APIUrl = BaseUrlTextBox.Text;
             BaseUrlTextBox.Enabled = false;
 
             Listener listener = new Listener(APIUrl);
-            listener.CounterChanged += _apiClient_ListenerCounterChanged;
+            listener.CounterChanged += _listenerCounterChanged;
             activeListeners.Add(listener);
 
             Thread listenerThread = new Thread(() =>
             {
-                listener.StartMonitoringAsync();
+                listener?.StartMonitoringAsync();
             });
 
             activeThreads.Add(listenerThread);
             listenerThread.Start();
 
             RegisterListener(listener);
-
-
         }
 
 
         private void RegisterListener(Listener listener)
         {
             ListViewItem listItem = new ListViewItem(listener.Name);
+
             listItem.SubItems.Add(listener.Target.ToString());
             listItem.SubItems.Add(listener.Counter.ToString());
 
             ListenersListView.Items.Add(listItem);
-
             listenerListViewMap[listener.Name] = listItem;
         }
 
 
-        private void _apiClient_ListenerCounterChanged(object? sender, int counter)
+        private void _listenerCounterChanged(object? sender, int counter)
         {
             if (sender is Listener listener)
             {
                 string listenerName = listener.Name;
-
-
                 UpdateListView(listenerName, counter);
             }
         }
@@ -85,7 +76,7 @@ namespace Listen
             }
             else
             {
-                if (listenerListViewMap.TryGetValue(listenerName, out ListViewItem listItem))
+                if (listenerListViewMap.TryGetValue(listenerName, out ListViewItem? listItem))
                 {
                     listItem.SubItems[2].Text = counter.ToString();
                 }
@@ -93,18 +84,15 @@ namespace Listen
         }
 
 
-        private async void StopButton_Click(object sender, EventArgs e)
+        private void StopButton_Click(object sender, EventArgs e)
         {
 
             Thread stopThread = new Thread(() =>
             {
-
-
                 foreach (var activeListener in activeListeners)
                 {
                     activeListener.StopMonitoring();
                 }
-
                 activeListeners.Clear();
 
                 this.Invoke((MethodInvoker)delegate
@@ -114,10 +102,6 @@ namespace Listen
                 });
 
                 listenerListViewMap.Clear();
-
-                Active = false;
-
-
 
                 BeginInvoke((MethodInvoker)delegate
                 {
@@ -140,16 +124,17 @@ namespace Listen
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(APIUrl)) { return; }
+            if (string.IsNullOrEmpty(APIUrl))
+                 return;
 
 
             Listener listener = new Listener(APIUrl);
-            listener.CounterChanged += _apiClient_ListenerCounterChanged;
+            listener.CounterChanged += _listenerCounterChanged;
             activeListeners.Add(listener);
 
             Thread apiThread = new Thread(() =>
             {
-                listener.StartMonitoringAsync();
+                listener?.StartMonitoringAsync();
             });
 
             activeThreads.Add(apiThread);
@@ -167,7 +152,7 @@ namespace Listen
 
                 string listenerName = selectedItem.Text;
 
-                Listener listner = activeListeners.FirstOrDefault(client => client.Name == listenerName);
+                Listener? listner = activeListeners?.FirstOrDefault(client => client.Name == listenerName);
 
                 if (listner != null)
                 {
@@ -182,7 +167,7 @@ namespace Listen
 
                         listenerListViewMap.Remove(listenerName);
 
-                        activeListeners.Remove(listner);
+                        activeListeners?.Remove(listner);
                     });
 
                     unregisterThread.Start();

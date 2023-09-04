@@ -1,6 +1,7 @@
 # Datapatrol task
 > a winform app with a simple api.
 
+**unregistering and stopping appear slow cause of the grace period i gave the thread to stop**
 ![](./static/test.gif)
 
 

@@ -29,6 +29,7 @@ namespace Listen
 
             APIUrl = BaseUrlTextBox.Text;
             BaseUrlTextBox.Enabled = false;
+            BaseUrlTextBox.BackColor = Color.LightGoldenrodYellow;
 
             Listener listener = new Listener(APIUrl);
             listener.CounterChanged += _listenerCounterChanged;
@@ -106,6 +107,8 @@ namespace Listen
                 BeginInvoke((MethodInvoker)delegate
                 {
                     FlipButtonState(ref StartButton);
+                    BaseUrlTextBox.BackColor = Color.White;
+                    BaseUrlTextBox.Enabled = true;
                     stopLbl.Visible = false;
                 });
             });
@@ -125,7 +128,7 @@ namespace Listen
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(APIUrl))
-                 return;
+                return;
 
 
             Listener listener = new Listener(APIUrl);

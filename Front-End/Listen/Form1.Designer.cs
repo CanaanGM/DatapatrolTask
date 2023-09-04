@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem2 = new ListViewItem("");
+            ListViewItem listViewItem1 = new ListViewItem("");
             apiLbl = new Label();
             BaseUrlTextBox = new TextBox();
             StartButton = new Button();
@@ -53,7 +53,7 @@
             // 
             // BaseUrlTextBox
             // 
-            BaseUrlTextBox.BackColor = SystemColors.Info;
+            BaseUrlTextBox.BackColor = Color.White;
             BaseUrlTextBox.Location = new Point(69, 23);
             BaseUrlTextBox.Name = "BaseUrlTextBox";
             BaseUrlTextBox.Size = new Size(224, 23);
@@ -84,7 +84,7 @@
             // ListenersListView
             // 
             ListenersListView.Columns.AddRange(new ColumnHeader[] { colName, colTarget, colCounter });
-            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem2 });
+            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem1 });
             ListenersListView.Location = new Point(69, 140);
             ListenersListView.Name = "ListenersListView";
             ListenersListView.Size = new Size(409, 245);

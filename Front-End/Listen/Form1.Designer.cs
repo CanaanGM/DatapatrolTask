@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem2 = new ListViewItem("");
+            ListViewItem listViewItem1 = new ListViewItem("");
             apiLbl = new Label();
             BaseUrlTextBox = new TextBox();
             StartButton = new Button();
@@ -83,7 +83,7 @@
             // ListenersListView
             // 
             ListenersListView.Columns.AddRange(new ColumnHeader[] { colName, colTarget, colCounter });
-            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem2 });
+            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem1 });
             ListenersListView.Location = new Point(69, 140);
             ListenersListView.Name = "ListenersListView";
             ListenersListView.Size = new Size(409, 245);
@@ -107,6 +107,7 @@
             // 
             // RegisterButton
             // 
+            RegisterButton.Enabled = false;
             RegisterButton.Location = new Point(484, 140);
             RegisterButton.Name = "RegisterButton";
             RegisterButton.Size = new Size(75, 23);
@@ -117,6 +118,7 @@
             // 
             // UnregisterButton
             // 
+            UnregisterButton.Enabled = false;
             UnregisterButton.Location = new Point(484, 169);
             UnregisterButton.Name = "UnregisterButton";
             UnregisterButton.Size = new Size(75, 23);

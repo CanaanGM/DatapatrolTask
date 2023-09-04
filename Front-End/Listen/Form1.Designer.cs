@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("");
+            ListViewItem listViewItem2 = new ListViewItem("");
             apiLbl = new Label();
             BaseUrlTextBox = new TextBox();
             StartButton = new Button();
@@ -39,6 +39,7 @@
             colCounter = new ColumnHeader();
             RegisterButton = new Button();
             UnregisterButton = new Button();
+            stopLbl = new Label();
             SuspendLayout();
             // 
             // apiLbl
@@ -83,7 +84,7 @@
             // ListenersListView
             // 
             ListenersListView.Columns.AddRange(new ColumnHeader[] { colName, colTarget, colCounter });
-            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            ListenersListView.Items.AddRange(new ListViewItem[] { listViewItem2 });
             ListenersListView.Location = new Point(69, 140);
             ListenersListView.Name = "ListenersListView";
             ListenersListView.Size = new Size(409, 245);
@@ -127,6 +128,17 @@
             UnregisterButton.UseVisualStyleBackColor = true;
             UnregisterButton.Click += UnregisterButton_Click;
             // 
+            // stopLbl
+            // 
+            stopLbl.AutoSize = true;
+            stopLbl.ForeColor = Color.Red;
+            stopLbl.Location = new Point(79, 78);
+            stopLbl.Name = "stopLbl";
+            stopLbl.Size = new Size(134, 15);
+            stopLbl.TabIndex = 7;
+            stopLbl.Text = "Stopping please wait . . .";
+            stopLbl.Visible = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -134,6 +146,7 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(800, 450);
+            Controls.Add(stopLbl);
             Controls.Add(UnregisterButton);
             Controls.Add(RegisterButton);
             Controls.Add(ListenersListView);
@@ -159,5 +172,6 @@
         private ColumnHeader colCounter;
         private Button RegisterButton;
         private Button UnregisterButton;
+        private Label stopLbl;
     }
 }
